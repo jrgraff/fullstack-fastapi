@@ -11,7 +11,8 @@ fastapi = "^0.78.0"
 ormar = {extras = ["sqlite"], version = "^0.11.1"}
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+pytest = "^7.1.2"
+fastapi = {extras = ["all"], version = "^0.78.0"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
