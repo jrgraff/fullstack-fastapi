@@ -8,6 +8,7 @@ authors = ["Jackson Graff <jacksongraff@hotmail.com>"]
 python = "^3.10"
 uvicorn = {extras = ["standard"], version = "^0.17.6"}
 fastapi = "^0.78.0"
+ormar = {extras = ["sqlite"], version = "^0.11.1"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
