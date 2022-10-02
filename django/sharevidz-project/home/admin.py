@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Home, Video
 
-# Register your models here.
+admin.site.register(Home)
+admin.site.register(Video)
