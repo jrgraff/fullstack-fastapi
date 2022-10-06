@@ -1,0 +1,8 @@
+{% extends 'gallery/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ gallery.title }}</h1>
+    <h4 class="text-muted">by {{ gallery.user.username }}</h4>
+</div>
+{% endblock %}
