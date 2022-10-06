@@ -28,8 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'gallery'
-LOGOUT_REDIRECT_URL = 'gallery'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 
 # Application definition
 

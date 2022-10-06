@@ -23,12 +23,16 @@ from gallery import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.gallery, name='gallery'),
-    
+    path('', views.home, name='home'),
+
     # AUTH
     path('signup', views.SignUp.as_view(), name='signup'),
     path('login', auth_views.LoginView.as_view(), name='login'),
     path('logout', auth_views.LogoutView.as_view(), name='logout'),
+
+    # GALLERY
+    path('gallery/create', views.CreateGallery.as_view(), name='create_gallery'),
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
