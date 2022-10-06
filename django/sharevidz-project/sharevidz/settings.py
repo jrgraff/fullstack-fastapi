@@ -28,8 +28,8 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'gallery'
+LOGOUT_REDIRECT_URL = 'gallery'
 
 # Application definition
 
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',
+    'gallery',
 ]
 
 MIDDLEWARE = [

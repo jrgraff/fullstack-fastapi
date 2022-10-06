@@ -19,11 +19,11 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from home import views
+from gallery import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
+    path('', views.gallery, name='gallery'),
     
     # AUTH
     path('signup', views.SignUp.as_view(), name='signup'),
