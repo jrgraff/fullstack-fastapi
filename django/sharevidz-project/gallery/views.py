@@ -3,7 +3,8 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
-from .models import Gallery
+from .models import Gallery, Video
+from .forms import VideoForm, SearchForm
 
 
 def home(request):
@@ -12,6 +13,23 @@ def home(request):
 
 def dashboard(request):
     return render(request, 'gallery/dashboard.html')
+
+
+def add_video(request, pk):
+    form = VideoForm()
+    search_form = SearchForm()
+
+    if request.method == 'POST':  # Create
+        filled_form = VideoForm(request.POST)
+        if filled_form.is_valid():
+            video = Video()
+            video.url = filled_form.cleaned_data['url']
+            video.youtube_id = filled_form.cleaned_data['youtube_id']
+            video.title = filled_form.cleaned_data['title']
+            video.gallery = Gallery.objects.get(pk=pk)
+            video.save()
+
+    return render(request, 'gallery/add_video.html', {'form': form, 'search_form': search_form})
 
 
 class SignUp(generic.CreateView):

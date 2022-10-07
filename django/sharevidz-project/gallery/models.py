@@ -11,4 +11,4 @@ class Video(models.Model):
     title = models.CharField(max_length=255)
     url = models.URLField()
     youtube_id = models.CharField(max_length=255)
-    hall = models.ForeignKey(Gallery, on_delete=models.CASCADE)
+    gallery = models.ForeignKey(Gallery, on_delete=models.CASCADE)

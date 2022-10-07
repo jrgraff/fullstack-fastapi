@@ -39,6 +39,9 @@ urlpatterns = [
     path('gallery/<int:pk>/delete',
          views.DeleteGallery.as_view(), name='delete_gallery'),
 
+    # VIDEO
+    path('gallery/<int:pk>/add-video', views.add_video, name='add_video'),
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
