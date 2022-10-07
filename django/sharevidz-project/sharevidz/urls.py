@@ -34,10 +34,10 @@ urlpatterns = [
     # GALLERY
     path('gallery/create', views.CreateGallery.as_view(), name='create_gallery'),
     path('gallery/<int:pk>', views.DetailGallery.as_view(), name='detail_gallery'),
-    # path('gallery/<int:pk>/update',
-    #      views.UpdateGallery.as_view(), name='update_gallery'),
-    # path('gallery/<int:pk>/delete',
-    #      views.DeleteGallery.as_view(), name='delete_gallery'),
+    path('gallery/<int:pk>/update',
+         views.UpdateGallery.as_view(), name='update_gallery'),
+    path('gallery/<int:pk>/delete',
+         views.DeleteGallery.as_view(), name='delete_gallery'),
 
 ]
 

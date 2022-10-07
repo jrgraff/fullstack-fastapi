@@ -11,7 +11,7 @@ def home(request):
 
 
 def dashboard(request):
-    return render(request, 'dashboard/home.html')
+    return render(request, 'gallery/dashboard.html')
 
 
 class SignUp(generic.CreateView):
@@ -32,7 +32,7 @@ class CreateGallery(generic.CreateView):
     model = Gallery
     fields = ['title']
     template_name = 'gallery/create_gallery.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('dashboard')
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -43,3 +43,17 @@ class CreateGallery(generic.CreateView):
 class DetailGallery(generic.DetailView):
     model = Gallery
     template_name = 'gallery/detail_gallery.html'
+
+
+class UpdateGallery(generic.UpdateView):
+    model = Gallery
+    template_name = 'gallery/update_gallery.html'
+    fields = ['title']
+    success_url = reverse_lazy('dashboard')
+
+
+class DeleteGallery(generic.DeleteView):
+    model = Gallery
+    template_name = 'gallery/delete_gallery.html'
+    fields = ['title']
+    success_url = reverse_lazy('dashboard')
