@@ -5,14 +5,15 @@
     <h2>Add a Video</h2>
     <form method="post">
         {% csrf_token %}
+        {% load widget_tweaks %}
 
-        <!-- Same as {{ form.as_p }} -->
+        
         {% for field in form %}
-        <p>
+        <div class="form-group {% if field.errors %}alert alert-danger{% endif %}">
             {{ field.errors }}
             {{ field.label_tag }}
-            {{ field }}
-        </p>
+            {% render_field field class="form-control" %}
+        </div>
         {% endfor %}
         <button type="submit" class="btn btn-primary">Create</button>
     </form>
