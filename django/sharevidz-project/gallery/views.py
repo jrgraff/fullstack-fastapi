@@ -1,9 +1,10 @@
+from encodings import search_function
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from django.forms.utils import ErrorList
 from .models import Gallery, Video
 from .forms import VideoForm, SearchForm
@@ -47,7 +48,16 @@ def add_video(request, pk):
                 errors = form.errors.setdefault('url', ErrorList())
                 errors.append('Needs to be a Youtube URL')
 
-    return render(request, 'gallery/add_video.html', {'form': form, 'search_form': search_form})
+    return render(request, 'gallery/add_video.html', {'form': form, 'search_form': search_form, 'gallery': gallery})
+
+
+def video_search(request):
+    search_form = SearchForm(request.GET)
+    if search_form.is_valid():
+        encoded_search_term = urllib.parse.quote(search_form.cleaned_data['search_term'])
+        response = requests.get(f'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=6&q={ encoded_search_term }&key={ YOUTUBE_API_KEY }')
+        return JsonResponse(response.json())
+    return JsonResponse({'error': 'Not able to validate form'})
 
 
 class SignUp(generic.CreateView):

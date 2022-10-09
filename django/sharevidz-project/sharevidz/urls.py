@@ -41,6 +41,7 @@ urlpatterns = [
 
     # VIDEO
     path('gallery/<int:pk>/add-video', views.add_video, name='add_video'),
+    path('video/search', views.video_search, name='video_search'),
 
 ]
 
