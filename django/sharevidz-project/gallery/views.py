@@ -18,7 +18,8 @@ def home(request):
 
 
 def dashboard(request):
-    return render(request, 'gallery/dashboard.html')
+    galleries = Gallery.objects.filter(user=request.user)
+    return render(request, 'gallery/dashboard.html', {'galleries': galleries})
 
 
 def add_video(request, pk):
