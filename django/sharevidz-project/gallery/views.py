@@ -103,3 +103,9 @@ class DeleteGallery(generic.DeleteView):
     template_name = 'gallery/delete_gallery.html'
     fields = ['title']
     success_url = reverse_lazy('dashboard')
+
+class DeleteVideo(generic.DeleteView):
+    model = Video
+    template_name = 'gallery/delete_video.html'
+    fields = ['title']
+    success_url = reverse_lazy('dashboard')
