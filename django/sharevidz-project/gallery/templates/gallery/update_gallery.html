@@ -5,10 +5,17 @@
     <h2>Edit Gallery</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Save</button>
+        {% load widget_tweaks %}  
+        {% for field in form %}
+        <div class="form-group {% if field.errors %}alert alert-danger{% endif %}">
+            {{ field.errors }}
+            {{ field.label_tag }}
+            {% render_field field class="form-control" %}
+        </div>
+        {% endfor %}
     </form>
-
+    
+    <button type="submit" class="btn btn-primary">Save</button>
     <a href="{% url 'delete_gallery' gallery.id  %}" class="btn btn-danger">Delete this Gallery</a>
 </div>
 {% endblock %}

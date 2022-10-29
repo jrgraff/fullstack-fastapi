@@ -14,7 +14,9 @@ import requests
 YOUTUBE_API_KEY = 'AIzaSyDQlLxz7q__97njJGToO0aky4hggZYdpnY'
 
 def home(request):
-    return render(request, 'gallery/home.html')
+    recent_galleries = Gallery.objects.all().order_by('-id')[:3]
+    popular_galleries = [Gallery.objects.get(pk=2)]
+    return render(request, 'gallery/home.html', {'recent_galleries': recent_galleries, 'popular_galleries': popular_galleries})
 
 
 def dashboard(request):
@@ -83,8 +85,8 @@ class CreateGallery(generic.CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        super(CreateGallery, self).form_valid(form)
-        return redirect('home')
+        test = super(CreateGallery, self).form_valid(form)
+        return redirect('dashboard')
 
 
 class DetailGallery(generic.DetailView):
