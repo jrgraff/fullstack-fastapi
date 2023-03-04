@@ -1,0 +1,23 @@
+{% extends 'layout/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ property.name }}</h1>
+    <h4 class="text-muted">Address: {{ property.address }}</h4>
+
+    <div class="row">
+        {% for apartment in property.apartment_set.all %}
+        <div class="col-md-4 mt-3">
+            <div class="mb-4 shadow-sm">
+                <p class="card-text">{{ apartment.number }}</p>
+                {% for rental in apartment.rental_set.all %}
+                    {% if not rental.terminated %}
+                        Rented to {{ rental.tenant }}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
