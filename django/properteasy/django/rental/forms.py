@@ -5,4 +5,4 @@ from .models import Rental
 class RentalForm(forms.ModelForm):
     class Meta:
         model = Rental
-        fields = ['tenant']
+        fields = ['tenant', 'rented_months']

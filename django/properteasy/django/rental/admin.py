@@ -3,10 +3,9 @@ from .models import Rental
 
 
 class ListRentals(admin.ModelAdmin):
-    list_display = ("tenant", "apartment", 'terminated',)
-    search_fields = ("tenant", "apartment", "terminated")
-    list_filter = ("tenant", "apartment",)
-    list_editable = ('terminated',)
+    list_display = ('tenant', 'apartment', 'rent_date', 'delivered_date')
+    search_fields = ('tenant', 'apartment')
+    list_filter = ('apartment',)
     list_per_page = 10
 
 

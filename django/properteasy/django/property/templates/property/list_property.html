@@ -1,16 +1,16 @@
 {% extends 'layout/base.html' %}
 
 {% block content %}
-  <h1>Properties List</h1>
-  {% if object_list %}
-  <ul>
-    {% for property in object_list %}
-      <li>
-        <a href="{% url 'property:detail' property.id %}">{{ property.name }}</a> ({{property.address}})
-      </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-    <p>There are no properties yet.</p>
-  {% endif %}
+<h1>Properties List</h1>
+{% if object_list %}
+<ul>
+  {% for property in object_list %}
+  <li>
+    <a href="{% url 'property:detail' property.id %}">{{ property.name }}</a> ({{property.address}})
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>There are no properties yet.</p>
+{% endif %}
 {% endblock %}

@@ -8,13 +8,19 @@
     <div class="row">
         {% for apartment in property.apartment_set.all %}
         <div class="col-md-4 mt-3">
-            <div class="mb-4 shadow-sm">
-                <p class="card-text">{{ apartment.number }}</p>
+            <div class="mb-4 shadow-sm border">
+                <p class="card-text">Number: {{ apartment.number }}</p>
+                <p class="card-text">Month value: {{ apartment.month_value }}</p>
+                {% if apartment.status == 'av' %}
+                <a href="{% url 'rental:create' apartment.id %}" class="btn btn btn-primary">Rent</a>
+                {% else %}
                 {% for rental in apartment.rental_set.all %}
-                    {% if not rental.terminated %}
-                        Rented to {{ rental.tenant }}
-                    {% endif %}
+                {% if not rental.delivered_date %}
+                Rented to {{ rental.tenant }}
+                <a href="{% url 'rental:terminate' rental.id %}" class="btn btn btn-primary">Return</a>
+                {% endif %}
                 {% endfor %}
+                {% endif %}
             </div>
         </div>
         {% endfor %}

@@ -17,6 +17,7 @@ def create_apartment(request, pk):
             apartment.property = property
             apartment.number = filled_form.cleaned_data['number']
             apartment.owner = filled_form.cleaned_data['owner']
+            apartment.month_value = filled_form.cleaned_data['month_value']
             apartment.save()
             return redirect('property:detail', pk)
 
@@ -33,10 +34,6 @@ class CreateProperty(LoginRequiredMixin, generic.CreateView):
 class DetailProperty(LoginRequiredMixin, generic.DetailView):
     model = Property
     template_name = 'property/detail_property.html'
-# def detail_property(request, pk):
-#     property = Property.objects.get(pk=pk)
-#     apartments = Apartment.objects.filter(rental__terminate=false)
-#     return render(request, 'gallery/dashboard.html', {'galleries': galleries})
 
 
 class ListProperty(LoginRequiredMixin, generic.ListView):
