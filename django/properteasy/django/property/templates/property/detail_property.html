@@ -4,6 +4,7 @@
 <div class="container">
     <h1>{{ property.name }}</h1>
     <h4 class="text-muted">Address: {{ property.address }}</h4>
+    <a href="{% url 'property:create_apartment' property.id %}" class="btn btn-primary">Add apartment</a>
 
     <div class="row">
         {% for apartment in property.apartment_set.all %}

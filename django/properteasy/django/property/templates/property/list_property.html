@@ -2,6 +2,8 @@
 
 {% block content %}
 <h1>Properties List</h1>
+<a href="{% url 'property:create' %}" class="btn btn-primary">Create property</a>
+
 {% if object_list %}
 <ul>
   {% for property in object_list %}
